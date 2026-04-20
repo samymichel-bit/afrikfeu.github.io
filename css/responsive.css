@@ -34,7 +34,9 @@
 
   /* ── Navbar ── */
   .nav-links,
-  .nav-actions .btn-ghost {
+  .nav-actions .btn-ghost,
+  .nav-actions .btn-wa,
+  .nav-actions .btn-primary {
     display: none;
   }
 
