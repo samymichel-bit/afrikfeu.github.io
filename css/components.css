@@ -192,53 +192,69 @@
    SERVICE CARD
 ══════════════════════════════════════════ */
 .service-card {
-  background: var(--white);
   border-radius: var(--r-lg);
-  overflow: visible;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform var(--ease), box-shadow var(--ease);
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  height: 320px;
 }
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
 .service-card-img {
-  height: 180px;
-  min-height: 180px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: block;
+  position: absolute;
+  inset: 0;
+  height: 100px;
+  min-height: unset;
   width: 100%;
+  z-index: 0;
+}
+.service-card-img img,
+.service-card-img ,img-placeholder {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 .service-card-body {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.85) 0%,
+    rgba(0,0,0,.6) 60%,
+    transparent 100%
+  );
 }
 .service-num {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 8px;
+  color: var(--orange-light);
+  margin-bottom: 6px;
 }
 .service-name {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: .5px;
-  color: var(--carbon);
+  color: var(--white);
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .service-desc {
-  font-size: 14px;
-  color: var(--steel);
-  line-height: 1.65;
-  flex: 1;
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.5;
+  display: none;
+}
+.service-card:hover .service-desc{
+  display: none;
 }
 .service-link {
   display: inline-flex;
@@ -246,8 +262,8 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--orange);
-  margin-top: 18px;
+  color: var(--orange-light);
+  margin-top: 10px;
   transition: gap var(--ease);
 }
 .service-card:hover .service-link { gap: 10px; }
