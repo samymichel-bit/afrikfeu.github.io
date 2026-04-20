@@ -194,7 +194,7 @@
 .service-card {
   background: var(--white);
   border-radius: var(--r-lg);
-  overflow: hidden;
+  overflow: visible;
   box-shadow: var(--shadow-sm);
   transition: transform var(--ease), box-shadow var(--ease);
   display: flex;
@@ -206,8 +206,11 @@
 }
 .service-card-img {
   height: 180px;
+  min-height: 180px;
   overflow: hidden;
   flex-shrink: 0;
+  display: block;
+  width: 100%;
 }
 .service-card-body {
   padding: 24px;

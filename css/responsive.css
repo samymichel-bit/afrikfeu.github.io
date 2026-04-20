@@ -112,7 +112,7 @@
     gap: 16px;
   }
 
-  .service-card-img { height: 160px; }
+  .service-card-img { height: 160px; min-height: 200px;}
 
   /* ── Products ── */
   .products-top {
