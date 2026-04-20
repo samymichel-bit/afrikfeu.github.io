@@ -47,21 +47,13 @@
   }
 
   .nav-topbar {
-    padding: 6px 0;
-  }
-
-  .topbar-right .topbar-item:not(.topbar-phone) {
-    display: none;
-  }
-
-  .topbar-left {
-    gap: 12px;
+    padding: none;
   }
 
   /* ── Hero ── */
   #hero {
-    padding-top: 88px;
-    padding-bottom: 48px;
+    padding-top: 72px;
+    padding-bottom: 40px;
     min-height: auto;
   }
 
