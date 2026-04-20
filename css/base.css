@@ -1,0 +1,263 @@
+/* ================================================================
+   BASE.CSS — Design System AFRIK FEU ET SERVICES
+   Couleurs : Orange feu + Noir carbone + Blanc cassé
+   Typographie : Bebas Neue (display) + DM Sans (body)
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ── */
+:root {
+  /* Palette */
+  --orange:        #E8620A;
+  --orange-deep:   #C04E05;
+  --orange-glow:   #FF7A2A;
+  --orange-light:  #FFA05A;
+  --carbon:        #111214;
+  --carbon-mid:    #1C1E22;
+  --carbon-soft:   #26292F;
+  --carbon-line:   #2E3138;
+  --steel:         #6B7280;
+  --steel-light:   #9CA3AF;
+  --cream:         #F9F6F1;
+  --cream-dark:    #EDE9E1;
+  --white:         #FFFFFF;
+
+  /* Whatsapp */
+  --wa-green:      #25D366;
+  --wa-green-dark: #128C7E;
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(60px, 10vw, 110px);
+
+  /* Radius */
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  20px;
+  --r-xl:  32px;
+
+  /* Shadows */
+  --shadow-sm:     0 2px 8px rgba(0,0,0,.12);
+  --shadow-md:     0 8px 28px rgba(0,0,0,.18);
+  --shadow-lg:     0 20px 56px rgba(0,0,0,.28);
+  --shadow-orange: 0 8px 32px rgba(232,98,10,.35);
+
+  /* Transitions */
+  --ease: .28s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--carbon);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul { list-style: none; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ── Container ── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 40px);
+}
+
+/* ── Section label ── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Section title ── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  color: var(--carbon);
+}
+.section-title .accent { color: var(--orange); }
+.section-title--light   { color: var(--white); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding: 14px 26px;
+  border-radius: var(--r-sm);
+  border: none;
+  cursor: pointer;
+  transition: all var(--ease);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: var(--shadow-orange);
+}
+.btn-primary:hover {
+  background: var(--orange-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(232,98,10,.45);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.4);
+}
+.btn-ghost:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,.08);
+}
+
+.btn-dark {
+  background: var(--carbon);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--carbon-mid);
+  transform: translateY(-2px);
+}
+
+.btn-wa {
+  background: var(--wa-green);
+  color: var(--white);
+  box-shadow: 0 6px 24px rgba(37,211,102,.35);
+}
+.btn-wa:hover {
+  background: var(--wa-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(37,211,102,.5);
+}
+
+/* ── Image Placeholder ── */
+.img-placeholder {
+  width: 33%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1c20 0%, #26292f 60%, #1a1c20 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent, transparent 14px,
+    rgba(232,98,10,.04) 14px, rgba(232,98,10,.04) 28px
+  );
+}
+.ph-icon  {
+  font-size: 40px;
+  opacity: .4;
+  z-index: 1;
+}
+.ph-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  z-index: 1;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+.ph-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--orange);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+/* ── Scroll animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }

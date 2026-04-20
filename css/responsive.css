@@ -1,0 +1,247 @@
+/* ================================================================
+   RESPONSIVE.CSS — Mobile-first breakpoints
+   Cible principale : smartphones 320px – 768px
+================================================================ */
+
+/* ══════════════════════════════
+   TABLET ≤ 1024px
+══════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .hero-float {
+    left: 0;
+    bottom: 16px;
+  }
+}
+
+/* ══════════════════════════════
+   MOBILE ≤ 768px
+══════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Navbar ── */
+  .nav-links,
+  .nav-actions .btn-ghost {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-drawer {
+    display: block;
+  }
+
+  .nav-topbar {
+    padding: 6px 0;
+  }
+
+  .topbar-right .topbar-item:not(.topbar-phone) {
+    display: none;
+  }
+
+  .topbar-left {
+    gap: 12px;
+  }
+
+  /* ── Hero ── */
+  #hero {
+    padding-top: 88px;
+    padding-bottom: 48px;
+    min-height: auto;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-visual {
+    display: none; /* Caché mobile, préserver la lisibilité */
+  }
+
+  .hero-title {
+    font-size: clamp(54px, 14vw, 72px);
+  }
+
+  .hero-badge { font-size: 11px; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn { text-align: center; }
+
+  .hero-stats {
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .hero-stat .stat-num { font-size: 36px; }
+
+  /* ── Trust bar ── */
+  .trust-bar-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+  .trust-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+  .trust-item:last-child { border-bottom: none; }
+
+  /* ── Services ── */
+  .services-top {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card-img { height: 160px; }
+
+  /* ── Products ── */
+  .products-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .product-card-img { height: 200px; }
+
+  /* ── About ── */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .about-img-wrap {
+    padding-bottom: 24px;
+    padding-right: 24px;
+  }
+
+  .about-img-main { height: 260px; }
+
+  .about-img-inset {
+    width: 38%;
+    height: 120px;
+  }
+
+  .about-values {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* ── CTA Banner ── */
+  .cta-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+  .cta-text .cta-sub { margin: 0 auto; }
+  .cta-actions {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .cta-actions .btn-white,
+  .cta-actions .btn-outline-white {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Contact ── */
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* ── Footer ── */
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 0 36px;
+  }
+
+  .footer-brand p { max-width: 100%; }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* ── WhatsApp float ── */
+  .wa-float-label { display: none; }
+
+  .wa-float-btn {
+    width: 54px;
+    height: 54px;
+  }
+
+  .wa-float {
+    bottom: 20px;
+    right: 16px;
+  }
+}
+
+/* ══════════════════════════════
+   PETIT MOBILE ≤ 480px
+══════════════════════════════ */
+@media (max-width: 480px) {
+
+  .hero-title { font-size: clamp(48px, 13vw, 62px); }
+
+  .hero-stats { gap: 16px; }
+
+  .section-title { font-size: clamp(32px, 10vw, 44px); }
+
+  .contact-form-box {
+    padding: 22px 18px;
+    border-radius: var(--r-lg);
+  }
+
+  .about-certs { gap: 8px; }
+  .cert-badge  { font-size: 11px; padding: 6px 10px; }
+
+  .products-top p { display: none; }
+}
+
+/* ══════════════════════════════
+   LARGE SCREENS ≥ 1400px
+══════════════════════════════ */
+@media (min-width: 1400px) {
+  .services-grid { grid-template-columns: repeat(4, 1fr); }
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
