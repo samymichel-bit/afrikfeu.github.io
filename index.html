@@ -16,6 +16,50 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afrikfeu-github-io.vercel.app/">
+  <meta property="og:title" content="AFRIK FEU ET SERVICES — Sécurité Incendie au Cameroun">
+  <meta property="og:description" content="Vente, recharge et maintenance d'extincteurs à Yaoundé et Douala. Devis gratuit.">
+  <meta property="og:image" content="https://afrikfeu-github-io.vercel.app/images/logo.jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://afrikfeu-github-io.vercel.app/">
+  <meta name="twitter:title" content="AFRIK FEU ET SERVICES — Sécurité Incendie au Cameroun">
+  <meta name="twitter:description" content="Vente, recharge et maintenance d'extincteurs à Yaoundé et Douala. Devis gratuit.">
+  <meta name="twitter:image" content="https://afrikfeu-github-io.vercel.app/images/logo.jpeg">
+
+  <!-- Données structurées Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "AFRIK FEU ET SERVICES",
+    "description": "Vente, recharge et maintenance d'extincteurs à Yaoundé et Douala.",
+    "telephone": "+237655096444",
+    "email": "contact@afrikfeu.cm",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Yaoundé",
+      "addressCountry": "CM"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://wa.me/237655096444",
+      "https://www.facebook.com/afrikfeu",
+      "https://www.instagram.com/afrikfeu"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -68,8 +112,8 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!--hamburger-->
-      <div class="hamburger"id="hamburger" onclick="toggleMenu()">
+      <!-- Hamburger sans onclick (géré par main.js) -->
+      <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
@@ -98,7 +142,6 @@
 
 </nav>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  HERO                                                    ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -107,7 +150,6 @@
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Contenu gauche -->
       <div class="hero-content">
         <div class="hero-badge">
           <span class="live-dot"></span>
@@ -149,19 +191,14 @@
         </div>
       </div>
 
-      <!-- Image droite -->
+      <!-- Image droite (originale, avec lazy load) -->
       <div class="hero-visual">
         <div class="hero-deco-tl"></div>
         <div class="hero-deco-br"></div>
         <div class="hero-img-frame">
-            <img src="images/font.jpeg"
-                 alt="Sécurité incendie AFRIK FEU" />
-          <div class="img-placeholder" style="height:100%">
-            <div class="ph-badge">Meilleur pour les interventions</div>
-            <div class="ph-icon">🧯</div>
-            <div class="ph-label">
-            </div>
-          </div>
+          <img src="images/font.jpeg"
+               alt="Sécurité incendie AFRIK FEU – extincteurs et services"
+               loading="lazy" />
         </div>
         <div class="hero-float">
           <div class="hf-icon">✅</div>
@@ -175,7 +212,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  TRUST BAR                                               ║
@@ -191,7 +227,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  SERVICES                                                ║
@@ -210,7 +245,7 @@
 
     <div class="services-grid">
 
-      <!-- Service 1 -->
+      <!-- Service 1 (image de fond conservée) -->
       <div class="service-card reveal" style="background-image: url('images/stock.jpeg');">
         <div class="service-card-body">
           <div class="service-num">01 — Service</div>
@@ -254,7 +289,6 @@
   </div>
 </section>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  PRODUCTS                                                ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -276,7 +310,7 @@
       <!-- Produit 1 -->
       <div class="product-card reveal">
         <div class="product-card-img">
-          <img src="images/poudreabc.jpg">
+          <img src="images/poudreabc.jpg" alt="Extincteur à poudre ABC 1-9 kg" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Bestseller</span>
@@ -295,17 +329,7 @@
       <!-- Produit 2 -->
       <div class="product-card reveal reveal-delay-1">
         <div class="product-card-img">
-          
-          <!--
-            📷 images/products/product-co2.jpg
-            Type : Extincteur CO2 gris/noir avec entonnoir — 400×220px
-          -->
-            <img src="images/im7.jpeg">
-            <div class="img-placeholder">
-            <div class="ph-badge">Photo produit</div>
-            <div class="ph-icon">🧯</div>
-            <div class="ph-label">images/products/product-co2.jpg</div>
-          </div>
+          <img src="images/im7.jpeg" alt="Extincteur CO2 2-5 kg pour feux électriques" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Électronique</span>
@@ -324,16 +348,7 @@
       <!-- Produit 3 -->
       <div class="product-card reveal reveal-delay-2">
         <div class="product-card-img">
-          <!--
-            📷 images/products/product-eau.jpg
-            Type : Extincteur à eau pulvérisée — 400×220px
-          -->
-            <img src="images/IMG-20260418-WA0024.jpg">
-            <div class="img-placeholder">
-            <div class="ph-badge">Photo produit</div>
-            <div class="ph-icon">🧯</div>
-            <div class="ph-label">images/products/product-eau.jpg</div>
-          </div>
+          <img src="images/IMG-20260418-WA0024.jpg" alt="Extincteur eau pulvérisée 6-9 litres" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Feux Solides</span>
@@ -352,16 +367,7 @@
       <!-- Produit 4 -->
       <div class="product-card reveal">
         <div class="product-card-img">
-          <!--
-            📷 images/products/product-mousse.jpg
-            Type : Extincteur mousse AFFF, étiquette jaune — 400×220px
-          -->
-           <img src="images/im2.jpeg"> 
-          <div class="img-placeholder">
-            <div class="ph-badge">Photo produit</div>
-            <div class="ph-icon">🧯</div>
-            <div class="ph-label">images/products/product-mousse.jpg</div>
-          </div>
+          <img src="images/im2.jpeg" alt="Extincteur mousse AFFF pour hydrocarbures" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Hydrocarbures</span>
@@ -380,16 +386,7 @@
       <!-- Produit 5 -->
       <div class="product-card reveal reveal-delay-1">
         <div class="product-card-img">
-          <!--
-            📷 images/products/product-ria.jpg
-            Type : Dévidoir / RIA mural en boîte rouge — 400×220px
-          -->
-            <img src="images/im4.jpeg">
-          <div class="img-placeholder">
-            <div class="ph-badge">Photo produit</div>
-            <div class="ph-icon">🚒</div>
-            <div class="ph-label">images/products/product-ria.jpg</div>
-          </div>
+          <img src="images/im4.jpeg" alt="Robinet Incendie Armé mural" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Fixe</span>
@@ -408,16 +405,7 @@
       <!-- Produit 6 -->
       <div class="product-card reveal reveal-delay-2">
         <div class="product-card-img">
-          <!--
-            📷 images/products/product-detecteur.jpg
-            Type : Détecteur de fumée ou centrale incendie — 400×220px
-          -->
-            <img src="images/im6.jpeg">
-          <div class="img-placeholder">
-            <div class="ph-badge">Photo produit</div>
-            <div class="ph-icon">🔔</div>
-            <div class="ph-label">images/products/product-detecteur.jpg</div>
-          </div>
+          <img src="images/im6.jpeg" alt="Détecteur de fumée et alarme incendie" loading="lazy" />
         </div>
         <div class="product-card-body">
           <span class="product-tag">Détection</span>
@@ -437,7 +425,6 @@
   </div>
 </section>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  À PROPOS                                                ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -448,30 +435,13 @@
       <!-- Image -->
       <div class="about-img-wrap reveal">
         <div class="about-img-main">
-          <!--
-            📷 images/about/about-main.jpg
-            Type : Équipe ou technicien en intervention terrain — 560×480px
-          -->
-            <img src="images/repare.jpeg">
-          <div class="img-placeholder" style="height:100%">
-            <div class="ph-icon">👷</div>
-            <div class="ph-label">images/about/about-main.jpg<br>560 × 480 px — Équipe / terrain</div>
-          </div>
+          <img src="images/repare.jpeg" alt="Technicien AFRIK FEU en intervention" loading="lazy" />
         </div>
         <div class="about-img-inset">
-          <!--
-            📷 images/about/about-inset.jpg
-            Type : Gros plan équipement ou logo — 200×160px
-          -->
-            <img src="images/logo.jpeg">
-          <div class="img-placeholder" style="height:100%">
-            <div class="ph-icon">🔧</div>
-            <div class="ph-label" style="font-size:9px">images/about/about-inset.jpg</div>
-          </div>
+          <img src="images/logo.jpeg" alt="Logo AFRIK FEU ET SERVICES" loading="lazy" />
         </div>
       </div>
 
-      <!-- Contenu -->
       <div class="about-content reveal reveal-delay-1">
         <span class="section-label">À propos de nous</span>
         <h2 class="section-title">Experts en<br>protection <span class="accent">incendie</span></h2>
@@ -524,7 +494,6 @@
   </div>
 </section>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  CTA BANNER                                              ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -541,7 +510,6 @@
   </div>
 </section>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  CONTACT                                                 ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -549,7 +517,6 @@
   <div class="container">
     <div class="contact-inner">
 
-      <!-- Infos -->
       <div class="contact-info reveal">
         <span class="section-label">Contactez-nous</span>
         <h2 class="section-title">Parlons de<br>votre <span class="accent">projet</span></h2>
@@ -602,7 +569,6 @@
         </div>
       </div>
 
-      <!-- Formulaire -->
       <div class="contact-form-box reveal reveal-delay-1">
         <div class="form-title">Demande de devis</div>
         <div class="form-sub">Remplissez ce formulaire — nous vous répondons sous 24h.</div>
@@ -660,7 +626,6 @@
   </div>
 </section>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  FOOTER                                                  ║
      ╚══════════════════════════════════════════════════════════╝ -->
@@ -668,7 +633,6 @@
   <div class="container">
     <div class="footer-main">
 
-      <!-- Brand -->
       <div class="footer-brand">
         <a href="#hero" class="nav-logo" style="margin-bottom:0">
           <div class="logo-icon-wrap">
@@ -696,7 +660,6 @@
         </div>
       </div>
 
-      <!-- Navigation -->
       <div class="footer-col">
         <div class="footer-col-title">Navigation</div>
         <ul>
@@ -708,7 +671,6 @@
         </ul>
       </div>
 
-      <!-- Services -->
       <div class="footer-col">
         <div class="footer-col-title">Nos services</div>
         <ul>
@@ -720,7 +682,6 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
         <div class="footer-contact-row">
@@ -753,14 +714,12 @@
   </div>
 </footer>
 
-
 <!-- ╔══════════════════════════════════════════════════════════╗
      ║  WHATSAPP FLOATING BUTTON                                ║
      ╚══════════════════════════════════════════════════════════╝ -->
 <a href="https://wa.me/237655096444" class="wa-float" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
   <span class="wa-float-label">Écrire sur WhatsApp</span>
   <div class="wa-float-btn">
-    <!-- Icône WhatsApp officielle SVG -->
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
@@ -769,7 +728,7 @@
 </a>
 
 <!-- JS -->
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 </body>
 </html>

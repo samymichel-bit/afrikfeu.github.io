@@ -1,7 +1,8 @@
-/* ================================================================
-   MAIN.JS — AFRIK FEU ET SERVICES
-================================================================ */
+'use strict';
 
+/* ================================================================
+   MAIN.JS — AFRIK FEU ET SERVICES (version optimisée)
+================================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ──────────────────────────────────────
@@ -11,21 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks  = document.querySelectorAll('.nav-links a');
   const sections  = document.querySelectorAll('section[id]');
 
+  let scrollTicking = false;
   window.addEventListener('scroll', () => {
-    // Shrink topbar on scroll
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        // Ajout/suppression de la classe 'scrolled'
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
 
-    // Active link highlight
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 110) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-    });
+        // Active link highlight
+        let current = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - 110) current = s.id;
+        });
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
   }, { passive: true });
-
 
   /* ──────────────────────────────────────
      2. HAMBURGER — Mobile drawer
@@ -33,25 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('nav-drawer');
 
-  window.toggleMenu = function () {
-    const open = drawer.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+  function openDrawer() {
+    drawer.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  window.toggleMenu = () => {
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   };
 
-  // Close drawer on outside click
+  // Fermer le drawer si clic en dehors
   document.addEventListener('click', (e) => {
-    if (
-      drawer.classList.contains('open') &&
-      !drawer.contains(e.target) &&
-      !hamburger.contains(e.target)
-    ) {
-      drawer.classList.remove('open');
-      hamburger.classList.remove('open');
-      document.body.style.overflow = '';
+    if (drawer.classList.contains('open') &&
+        !drawer.contains(e.target) &&
+        !hamburger.contains(e.target)) {
+      closeDrawer();
     }
   });
-
 
   /* ──────────────────────────────────────
      3. SCROLL REVEAL — Intersection Observer
@@ -60,25 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target); // Ne déclencher qu'une fois
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-
   /* ──────────────────────────────────────
      4. FORMULAIRE — Validation + Feedback
   ────────────────────────────────────── */
-  window.submitForm = function () {
+  const clearFieldErrors = () => {
+    document.querySelectorAll('.field-error').forEach(e => e.remove());
+    const fields = ['f-nom', 'f-tel', 'f-msg'];
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.borderColor = '';
+    });
+  };
+
+  window.submitForm = () => {
     const nom     = document.getElementById('f-nom').value.trim();
     const tel     = document.getElementById('f-tel').value.trim();
     const message = document.getElementById('f-msg').value.trim();
     const btn     = document.getElementById('submit-btn');
 
-    // Reset errors
-    document.querySelectorAll('.field-error').forEach(e => e.remove());
+    clearFieldErrors();
 
     let valid = true;
     const showError = (id, msg) => {
@@ -112,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (el) el.value = '';
       });
 
+      // Nettoyer les erreurs après succès
+      clearFieldErrors();
+
       setTimeout(() => {
         btn.textContent    = 'Envoyer la demande →';
         btn.style.background = '';
@@ -120,52 +141,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1200);
   };
 
-
   /* ──────────────────────────────────────
-     5. SMOOTH SCROLL — Drawer links
+     5. SMOOTH SCROLL — Tous les liens #anchor
   ────────────────────────────────────── */
+  const scrollToTarget = (hash) => {
+    const target = document.querySelector(hash);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight - 8;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
+      const hash = link.getAttribute('href');
+      if (hash === '#') return;
       e.preventDefault();
-      // Close drawer if open
-      if (drawer.classList.contains('open')) {
-        drawer.classList.remove('open');
-        hamburger.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      const offset = navbar.offsetHeight + 8;
-      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+      // Fermer le drawer si ouvert
+      if (drawer.classList.contains('open')) closeDrawer();
+      scrollToTarget(hash);
     });
   });
-
 
   /* ──────────────────────────────────────
      6. COUNTER ANIMATION — Hero stats
   ────────────────────────────────────── */
-  const counters = document.querySelectorAll('[data-count]');
+  const easeOutQuad = t => t * (2 - t); // fonction d'easing
+
+  const animateCounter = (el, end, suffix, duration = 1500) => {
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const current = Math.round(easeOutQuad(progress) * end);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = end + suffix; // assure la valeur finale exacte
+      }
+    };
+    requestAnimationFrame(step);
+  };
+
   const countObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el    = entry.target;
-      const end   = parseInt(el.dataset.count, 10);
+      const el     = entry.target;
+      const end    = parseInt(el.dataset.count, 10);
       const suffix = el.dataset.suffix || '';
-      let current = 0;
-      const step  = Math.ceil(end / 40);
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= end) {
-          current = end;
-          clearInterval(timer);
-        }
-        el.textContent = current + suffix;
-      }, 30);
+      animateCounter(el, end, suffix);
       countObserver.unobserve(el);
     });
   }, { threshold: 0.5 });
 
-  counters.forEach(c => countObserver.observe(c));
-
+  document.querySelectorAll('[data-count]').forEach(c => countObserver.observe(c));
 });
