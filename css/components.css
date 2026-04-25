@@ -165,7 +165,9 @@
   flex-direction: column;
 }
 .nav-drawer ul li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
   font-size: 16px;
   font-weight: 600;
   color: rgba(255,255,255,.75);

@@ -60,6 +60,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -68,6 +69,9 @@ body {
   color: var(--carbon);
   line-height: 1.65;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior-x: none;
 }
 
 img {

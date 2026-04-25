@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   };
 
+  hamburger.addEventListener('click', window.toggleMenu);
+
   // Fermer le drawer si clic en dehors
   document.addEventListener('click', (e) => {
     if (drawer.classList.contains('open') &&
@@ -62,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         !hamburger.contains(e.target)) {
       closeDrawer();
     }
+  });
+
+  // Fermer le drawer après clic sur un lien interne
+  drawer.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => closeDrawer());
   });
 
   /* ──────────────────────────────────────
@@ -147,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollToTarget = (hash) => {
     const target = document.querySelector(hash);
     if (!target) return;
-    const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight - 8;
+    const navHeight = navbar.getBoundingClientRect().height || 60;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
